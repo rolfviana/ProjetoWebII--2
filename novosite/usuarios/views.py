@@ -1,3 +1,5 @@
+from urllib import request
+
 from django.shortcuts import render
 from django.http import HttpResponse
 
@@ -40,3 +42,6 @@ def cadastro(request):
         )
         user.save()
         return HttpResponse('Usuário cadastrado com sucesso!.')
+
+def home(request):
+    return render(request, 'usuarios/home.html')
