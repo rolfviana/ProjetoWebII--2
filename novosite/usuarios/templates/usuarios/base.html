@@ -23,7 +23,7 @@
 
     <div class="container-fluid">
 
-        <a class="navbar-brand fw-bold text-white" href="{% url 'home' %}">
+        <a class="navbar-brand fw-bold text-white d-flex align-items-center" href="{% url 'home' %}">
             <img src="{% static 'img/semfundo.png' %}" alt="Logo InventariAR" width="44" height="44" class="d-inline-block align-text-top me-2">
             InventariAR - Sistema de Gerenciamento de Patrimônio
         </a>
@@ -46,13 +46,19 @@
 
         <!-- Menu lateral -->
 
-        <div class="col-md-2 bg-light vh-100 p-3 shadow-sm">
+        <div id="sidebarMenu" class="col-md-2 bg-light vh-100 p-3 shadow-sm">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <button id="sidebarToggle" class="btn-hamburger" type="button" aria-label="Mostrar ou ocultar menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <h5 class="mb-0">Menu</h5>
+            </div>
 
-            <h5>Menu</h5>
-
-            <hr>
-
-            <ul class="nav flex-column">
+            <div id="sidebarContent">
+                <hr>
+                <ul class="nav flex-column">
 
                 <li class="nav-item">
 
@@ -120,6 +126,7 @@
                 </li>
 
             </ul>
+            </div>
 
         </div>
 
@@ -137,14 +144,42 @@
 
 </div>
 
-<footer class="text-center text-white p-3">
-
-    Sistema de Gerenciamento de Patrimônio © 2026
-
+<footer class="text-white py-5" style="background-color: #ff7a00;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mb-4 mb-md-0">
+                <h5>Sobre o InventariAR</h5>
+                <p>O InventariAR é um sistema de gerenciamento de patrimônio pensado para facilitar o controle de ativos, localização e status dos bens da sua organização.</p>
+                <p>Nosso objetivo é ajudar equipes administrativas a reduzir perdas, simplificar inventários e ter mais visibilidade sobre o ciclo de vida dos bens.</p>
+            </div>
+            <div class="col-md-6">
+                <h5>Contato</h5>
+                <ul class="list-unstyled mb-0">
+                    <li><strong>E-mail:</strong> suporte@inventariar.com.br</li>
+                    <li><strong>Telefone:</strong> (11) 4000-0000</li>
+                    <li><strong>Endereço:</strong> Av. Exemplo, 1000, São Paulo - SP</li>
+                    <li class="mt-2"><a href="{% url 'contato' %}" class="text-white text-decoration-underline">Ir para a página de contato</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            Sistema de Gerenciamento de Patrimônio © 2026
+        </div>
+    </div>
 </footer>
 
 <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const sidebarContent = document.getElementById('sidebarContent');
+
+    if (sidebarToggle && sidebarContent) {
+        sidebarToggle.addEventListener('click', () => {
+            sidebarContent.classList.toggle('d-none');
+        });
+    }
+</script>
 </body>
 
 </html>
