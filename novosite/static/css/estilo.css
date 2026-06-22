@@ -1,0 +1,73 @@
+/* Página login */
+
+.login-page{
+
+    background: linear-gradient(
+        135deg,
+        #fff4eb,
+        #ffffff
+    );
+}
+
+/* Card */
+
+.login-card{
+
+    border-radius: 25px;
+}
+
+/* Logo */
+
+.logo{
+
+    font-size: 48px;
+
+    font-weight: bold;
+
+    color: #ff7a00;
+}
+
+/* Campos */
+
+.form-control{
+
+    border-radius: 12px;
+}
+
+.form-control:focus{
+
+    border-color: #ff7a00;
+
+    box-shadow: 0 0 0 0.25rem rgba(255,122,0,0.2);
+}
+
+/* Botão */
+
+.btn-laranja{
+
+    background: #ff7a00;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 12px;
+
+    font-weight: bold;
+}
+
+.btn-laranja:hover{
+
+    background: #e56d00;
+
+    color: white;
+}
+
+.logo-sistema{
+
+    width: 180px;
+
+    height: auto;
+
+    object-fit: contain;
+}

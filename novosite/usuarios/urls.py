@@ -5,4 +5,37 @@ urlpatterns = [
     path('home/', views.home, name='home'),
     path('login/', views.login, name='login'),
     path('cadastro/', views.cadastro, name='cadastro'),
+
+    path(
+        'patrimonio/cadastrar/',
+
+        views.cadastrar_patrimonio,
+
+        name='cadastrar_patrimonio'
+    ),
+
+    path(
+        'patrimonios/',
+
+        views.listar_patrimonios,
+
+        name='listar_patrimonios'
+    ),
+
+    path(
+        'editar/<int:id>/',
+
+        views.editar_patrimonio,
+
+        name='editar_patrimonio'
+    ),
+
+    path(
+        'excluir/<int:id>/',
+
+        views.excluir_patrimonio,
+
+        name='excluir_patrimonio'
+    ),
+
 ]

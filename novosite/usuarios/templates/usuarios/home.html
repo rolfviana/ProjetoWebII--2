@@ -1,1 +1,129 @@
 {% extends 'usuarios/base.html' %}
+
+{% block conteudo %}
+
+<h2 class="mb-4">
+
+Dashboard Patrimonial
+
+</h2>
+
+<div class="row">
+
+    <!-- Gráfico Linha -->
+
+    <div class="col-md-8 mb-4">
+
+        <div class="card shadow border-0 p-4">
+
+            <h5>
+
+                📈 Evolução Patrimonial
+
+            </h5>
+
+            <canvas id="graficoLinha"></canvas>
+
+        </div>
+
+    </div>
+
+    <!-- Pizza -->
+
+    <div class="col-md-4 mb-4">
+
+        <div class="card shadow border-0 p-4">
+
+            <h5>
+
+                🥧 Distribuição
+
+            </h5>
+
+            <canvas id="graficoPizza"></canvas>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row">
+
+    <!-- Barras -->
+
+    <div class="col-md-6">
+
+        <div class="card shadow border-0 p-4">
+
+            <h5>
+
+                📊 Patrimônios por Status
+
+            </h5>
+
+            <canvas id="graficoBarra"></canvas>
+
+        </div>
+
+    </div>
+
+    <!-- Tabela -->
+
+    <div class="col-md-6">
+
+        <div class="card shadow border-0 p-4">
+
+            <h5>
+
+                📋 Últimos Cadastros
+
+            </h5>
+
+            <table class="table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Patrimônio</th>
+
+                        <th>Status</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>Notebook Dell</td>
+
+                        <td>Em uso</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+console.log('Teste');
+
+console.log({{ em_uso }});
+
+console.log({{ manutencao }});
+
+console.log({{ inativo }});
+
+</script>
+
+{% endblock %}
