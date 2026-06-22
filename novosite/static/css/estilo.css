@@ -1,73 +1,36 @@
-/* Página login */
-
-.login-page{
-
-    background: linear-gradient(
-        135deg,
-        #fff4eb,
-        #ffffff
-    );
+:root {
+    --cor-principal: #e56d00;
 }
 
-/* Card */
-
-.login-card{
-
-    border-radius: 25px;
+/* 🔥 NAVBAR */
+.navbar {
+    background-color: var(--cor-principal) !important;
 }
 
-/* Logo */
-
-.logo{
-
-    font-size: 48px;
-
-    font-weight: bold;
-
-    color: #ff7a00;
-}
-
-/* Campos */
-
-.form-control{
-
-    border-radius: 12px;
-}
-
-.form-control:focus{
-
-    border-color: #ff7a00;
-
-    box-shadow: 0 0 0 0.25rem rgba(255,122,0,0.2);
-}
-
-/* Botão */
-
-.btn-laranja{
-
-    background: #ff7a00;
-
-    color: white;
-
-    border: none;
-
-    border-radius: 12px;
-
-    font-weight: bold;
-}
-
-.btn-laranja:hover{
-
-    background: #e56d00;
-
+/* 🔥 FOOTER */
+footer {
+    background-color: var(--cor-principal) !important;
     color: white;
 }
 
-.logo-sistema{
+/* 🔥 BOOTSTRAP bg-success FORÇADO */
+.bg-success {
+    background-color: var(--cor-principal) !important;
+}
 
-    width: 180px;
+/* 🔥 BOTÕES BOOTSTRAP (IMPORTANTE) */
+.btn-primary,
+.btn-success,
+.btn {
+    background-color: var(--cor-principal) !important;
+    border-color: var(--cor-principal) !important;
+    color: white !important;
+}
 
-    height: auto;
-
-    object-fit: contain;
+/* hover */
+.btn:hover,
+.btn-primary:hover,
+.btn-success:hover {
+    background-color: #e56d00 !important;
+    border-color: #e56d00 !important;
 }

@@ -4,6 +4,34 @@
 
 <h2>Lista de Patrimônios</h2>
 
+<form method="get" class="row g-3 align-items-end mb-4">
+    <div class="col-md-4">
+        <label for="filter_by" class="form-label">Filtrar por</label>
+        <select class="form-select" id="filter_by" name="filter_by">
+            <option value="">Selecione um campo</option>
+            <option value="tombamento" {% if filter_by == 'tombamento' %}selected{% endif %}>Tombamento</option>
+            <option value="nome" {% if filter_by == 'nome' %}selected{% endif %}>Nome</option>
+            <option value="categoria" {% if filter_by == 'categoria' %}selected{% endif %}>Categoria</option>
+            <option value="localizacao" {% if filter_by == 'localizacao' %}selected{% endif %}>Localização</option>
+            <option value="responsavel" {% if filter_by == 'responsavel' %}selected{% endif %}>Responsável</option>
+            <option value="status" {% if filter_by == 'status' %}selected{% endif %}>Status</option>
+        </select>
+    </div>
+    <div class="col-md-5">
+        <label for="search" class="form-label">Valor de busca</label>
+        <input type="text" class="form-control" id="search" name="search" value="{{ search }}" placeholder="Digite o valor para filtrar">
+    </div>
+    <div class="col-md-3">
+        <button type="submit" class="btn btn-primary w-100">Aplicar filtro</button>
+    </div>
+</form>
+
+{% if filter_by and search %}
+<div class="alert alert-info">
+    Mostrando resultados para <strong>{{ filter_by|capfirst }}</strong> contendo <strong>{{ search }}</strong>.
+</div>
+{% endif %}
+
 <hr>
 
 <table class="table table-striped">

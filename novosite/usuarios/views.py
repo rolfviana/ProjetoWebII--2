@@ -164,7 +164,23 @@ def cadastrar_patrimonio(request):
 
 def listar_patrimonios(request):
 
+    filter_by = request.GET.get('filter_by', '')
+    search = request.GET.get('search', '').strip()
+
+    filter_fields = {
+        'tombamento': 'numero_tombamento',
+        'nome': 'nome',
+        'categoria': 'categoria',
+        'localizacao': 'localizacao',
+        'responsavel': 'responsavel',
+        'status': 'status',
+    }
+
     patrimonios = Patrimonio.objects.all()
+
+    if filter_by in filter_fields and search:
+        lookup = f"{filter_fields[filter_by]}__icontains"
+        patrimonios = patrimonios.filter(**{lookup: search})
 
     return render(
 
@@ -174,9 +190,36 @@ def listar_patrimonios(request):
 
         {
 
-            'patrimonios': patrimonios
+            'patrimonios': patrimonios,
+            'filter_by': filter_by,
+            'search': search,
+            'filter_fields': filter_fields,
 
         }
+
+    )
+
+
+# ---------------- PÁGINAS INSTITUCIONAIS ---------------- #
+
+def sobre(request):
+
+    return render(
+
+        request,
+
+        'usuarios/sobre.html'
+
+    )
+
+
+def contato(request):
+
+    return render(
+
+        request,
+
+        'usuarios/contato.html'
 
     )
 
@@ -216,6 +259,8 @@ def editar_patrimonio(request, id):
     patrimonio.data_aquisicao = request.POST.get('data')
 
     patrimonio.valor = request.POST.get('valor')
+    if patrimonio.valor == "" or patrimonio.valor is None:
+        patrimonio.valor = 0
 
     patrimonio.status = request.POST.get('status')
 

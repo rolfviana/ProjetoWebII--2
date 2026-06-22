@@ -1,0 +1,46 @@
+{% extends 'usuarios/base.html' %}
+
+{% block conteudo %}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card border-0 shadow-lg rounded-3 my-5">
+                <div class="card-body p-5">
+                    <h2 class="mb-4">Contato</h2>
+                    <p class="lead">Fale conosco para esclarecer dúvidas ou solicitar suporte sobre o sistema.</p>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <h5>Informações de contato</h5>
+                            <ul class="list-unstyled">
+                                <li><strong>E-mail:</strong> suporte@inventariar.com.br</li>
+                                <li><strong>Telefone:</strong> (11) 4000-0000</li>
+                                <li><strong>Endereço:</strong> Av. Exemplo, 1000, São Paulo - SP</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <h5>Mensagem</h5>
+                            <form>
+                                <div class="mb-3">
+                                    <label class="form-label" for="nome">Nome</label>
+                                    <input class="form-control" id="nome" type="text" placeholder="Seu nome">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="email">E-mail</label>
+                                    <input class="form-control" id="email" type="email" placeholder="seu@email.com">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="mensagem">Mensagem</label>
+                                    <textarea class="form-control" id="mensagem" rows="4" placeholder="Escreva sua mensagem"></textarea>
+                                </div>
+                                <button class="btn btn-primary" type="button">Enviar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

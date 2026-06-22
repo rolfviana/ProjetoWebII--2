@@ -2,48 +2,24 @@
 
 {% block conteudo %}
 
-<h2 class="mb-4">
-
-Dashboard Patrimonial
-
-</h2>
+<h2 class="mb-4">Dashboard Patrimonial</h2>
 
 <div class="row">
 
     <!-- Gráfico Linha -->
-
     <div class="col-md-8 mb-4">
-
         <div class="card shadow border-0 p-4">
-
-            <h5>
-
-                📈 Evolução Patrimonial
-
-            </h5>
-
+            <h5>📈 Evolução Patrimonial</h5>
             <canvas id="graficoLinha"></canvas>
-
         </div>
-
     </div>
 
     <!-- Pizza -->
-
     <div class="col-md-4 mb-4">
-
         <div class="card shadow border-0 p-4">
-
-            <h5>
-
-                🥧 Distribuição
-
-            </h5>
-
+            <h5>🥧 Distribuição</h5>
             <canvas id="graficoPizza"></canvas>
-
         </div>
-
     </div>
 
 </div>
@@ -51,79 +27,107 @@ Dashboard Patrimonial
 <div class="row">
 
     <!-- Barras -->
-
     <div class="col-md-6">
-
         <div class="card shadow border-0 p-4">
-
-            <h5>
-
-                📊 Patrimônios por Status
-
-            </h5>
-
+            <h5>📊 Patrimônios por Status</h5>
             <canvas id="graficoBarra"></canvas>
-
         </div>
-
     </div>
 
     <!-- Tabela -->
-
     <div class="col-md-6">
-
         <div class="card shadow border-0 p-4">
-
-            <h5>
-
-                📋 Últimos Cadastros
-
-            </h5>
+            <h5>📋 Últimos Cadastros</h5>
 
             <table class="table">
-
                 <thead>
-
                     <tr>
-
                         <th>Patrimônio</th>
-
                         <th>Status</th>
-
                     </tr>
-
                 </thead>
 
                 <tbody>
-
                     <tr>
-
                         <td>Notebook Dell</td>
-
                         <td>Em uso</td>
-
                     </tr>
-
                 </tbody>
-
             </table>
 
         </div>
-
     </div>
 
 </div>
 
+<!-- ===================== -->
+<!-- 1. CHART.JS PRIMEIRO -->
+<!-- ===================== -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- ===================== -->
+<!-- 2. DADOS DO DJANGO -->
+<!-- ===================== -->
 <script>
+const emUso = Number("{{ em_uso|default:0 }}");
+const manutencao = Number("{{ manutencao|default:0 }}");
+const inativo = Number("{{ inativo|default:0 }}");
 
-console.log('Teste');
+console.log("Em uso:", emUso);
+console.log("Manutenção:", manutencao);
+console.log("Inativo:", inativo);
+</script>
 
-console.log({{ em_uso }});
+<!-- ===================== -->
+<!-- 3. GRÁFICO DE BARRAS -->
+<!-- ===================== -->
+<script>
+new Chart(document.getElementById('graficoBarra'), {
+    type: 'bar',
+    data: {
+        labels: ['Em uso', 'Manutenção', 'Inativo'],
+        datasets: [{
+            label: 'Patrimônios',
+            data: [emUso, manutencao, inativo],
+            backgroundColor: ['#ff7a00', '#ffc107', '#dc3545']
+        }]
+    }
+});
+</script>
 
-console.log({{ manutencao }});
+<!-- ===================== -->
+<!-- 4. GRÁFICO PIZZA -->
+<!-- ===================== -->
+<script>
+new Chart(document.getElementById('graficoPizza'), {
+    type: 'pie',
+    data: {
+        labels: ['Em uso', 'Manutenção', 'Inativo'],
+        datasets: [{
+            data: [emUso, manutencao, inativo],
+            backgroundColor: ['#ff7a00', '#ffc107', '#dc3545']
+        }]
+    }
+});
+</script>
 
-console.log({{ inativo }});
-
+<!-- ===================== -->
+<!-- 5. GRÁFICO LINHA -->
+<!-- ===================== -->
+<script>
+new Chart(document.getElementById('graficoLinha'), {
+    type: 'line',
+    data: {
+        labels: ['Em uso', 'Manutenção', 'Inativo'],
+        datasets: [{
+            label: 'Patrimônio',
+            data: [emUso, manutencao, inativo],
+            borderColor: '#ff7a00',
+            backgroundColor: 'rgba(255,122,0,0.2)',
+            fill: true
+        }]
+    }
+});
 </script>
 
 {% endblock %}

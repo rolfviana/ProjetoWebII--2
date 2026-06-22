@@ -38,4 +38,20 @@ urlpatterns = [
         name='excluir_patrimonio'
     ),
 
+    path(
+        'sobre/',
+
+        views.sobre,
+
+        name='sobre'
+    ),
+
+    path(
+        'contato/',
+
+        views.contato,
+
+        name='contato'
+    ),
+
 ]
