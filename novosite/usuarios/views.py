@@ -200,6 +200,19 @@ def listar_patrimonios(request):
     )
 
 
+# ---------------- SCANNER AR ---------------- #
+
+def scanear_patrimonio(request):
+
+    return render(
+
+        request,
+
+        'usuarios/scanear.html'
+
+    )
+
+
 # ---------------- PÁGINAS INSTITUCIONAIS ---------------- #
 
 def sobre(request):

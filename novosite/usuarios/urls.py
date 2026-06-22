@@ -23,6 +23,14 @@ urlpatterns = [
     ),
 
     path(
+        'patrimonio/scanner/',
+
+        views.scanear_patrimonio,
+
+        name='scanear_patrimonio'
+    ),
+
+    path(
         'editar/<int:id>/',
 
         views.editar_patrimonio,

@@ -1,0 +1,53 @@
+{% extends 'usuarios/base.html' %}
+
+{% block conteudo %}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card border-0 shadow-lg rounded-3 my-5">
+                <div class="card-body p-5">
+                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3 mb-4">
+                        <div>
+                            <h2>Scanner AR de Equipamento</h2>
+                            <p class="lead">Use a câmera do dispositivo para escanear o patrimônio em realidade aumentada. A página já está preparada para iniciar a captura.</p>
+                        </div>
+                        <button id="startScanner" class="btn btn-primary btn-lg">Iniciar Scanner</button>
+                    </div>
+
+                    <div class="ratio ratio-16x9 mb-3 position-relative" style="background: #000; border-radius: 1rem; overflow: hidden;">
+                        <video id="camera" autoplay muted playsinline style="width:100%; height:100%; object-fit: cover;"></video>
+                        <div class="position-absolute top-0 start-0 w-100 h-100" style="pointer-events: none;">
+                            <div style="position:absolute; top:50%; left:50%; width:80%; height:80%; transform:translate(-50%, -50%); border: 2px dashed rgba(255,255,255,0.85); border-radius: 1rem;"></div>
+                            <div style="position:absolute; top:50%; left:50%; width: 100%; text-align:center; transform:translate(-50%, -50%); color:#fff; text-shadow:0 0 10px rgba(0,0,0,0.8);">Aponte a câmera para o equipamento</div>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-warning">Este scanner é uma interface inicial para o uso de realidade aumentada. A captura da câmera será iniciada ao clicar em <strong>Iniciar Scanner</strong>.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+const startButton = document.getElementById('startScanner');
+const cameraVideo = document.getElementById('camera');
+
+startButton.addEventListener('click', async () => {
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        alert('Seu navegador não suporta acesso à câmera.');
+        return;
+    }
+
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' }, audio: false });
+        cameraVideo.srcObject = stream;
+    } catch (error) {
+        console.error(error);
+        alert('Não foi possível iniciar a câmera. Verifique as permissões.');
+    }
+});
+</script>
+
+{% endblock %}
